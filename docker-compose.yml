@@ -1,0 +1,51 @@
+version: '3.8'
+
+services:
+  # Service 1: The Relational Database Layer
+  bookstore-db:
+    image: postgres:16-alpine
+    container_name: bookstore_postgres_db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${DB_USER}       
+      POSTGRES_PASSWORD: ${DB_PASSWORD} 
+      POSTGRES_DB: ${DB_NAME}  
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    # Legacy engine healthcheck validation rules
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d bookstore"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    networks:
+      - bookstore-network
+
+  # Service 2: The Stateless Node.js App Layer
+  bookstore-app:
+    build: . 
+    container_name: bookstore_web_app
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      - DB_HOST=bookstore-db
+      - DB_USER=${DB_USER}
+      - DB_PASSWORD=${DB_PASSWORD}
+      - DB_NAME=${DB_NAME}
+      - DB_PORT=${DB_PORT}
+    depends_on:
+      bookstore-db:
+        condition: service_healthy # This will now pass since the healthcheck is defined
+    networks:
+      - bookstore-network
+
+volumes:
+  pgdata:
+
+networks:
+  bookstore-network:
+    driver: bridge

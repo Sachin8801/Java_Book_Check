@@ -3,215 +3,423 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Book Recommendations</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Fredoka+One&display=swap" rel="stylesheet">
+    <title>The Golden Alcove // Luxury AI Book Discovery</title>
+    <!-- Premium Editorial & Interface Typography -->
+    <link rel="preconnect" href="googleapis.com">
+    <link rel="preconnect" href="gstatic.com" crossorigin>
+    <link href="googleapis.com" rel="stylesheet">
     <style>
-        body {
-            font-family: 'Poppins', sans-serif;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-            background: #0a1929;
-            color: #ffffff;
+        :root {
+            /* Luxury Gold & Midnight Sapphire Color Matrix */
+            --bg-sapphire: #030a16;
+            --panel-sapphire: rgba(6, 17, 38, 0.7);
+            --gold-primary: #d4af37;
+            --gold-bright: #f3e5ab;
+            --gold-glow: rgba(212, 175, 55, 0.25);
+            --paper-light: #f1f5f9;
+            --border-gold: rgba(212, 175, 55, 0.15);
+            --font-serif: 'Cinzel', serif;
+            --font-body: 'Plus Jakarta Sans', sans-serif;
+            --font-classic: 'Instrument Serif', serif;
         }
 
-        h1, h2 {
-            font-family: 'Fredoka One', cursive;
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-sapphire);
+            color: var(--paper-light);
+            font-family: var(--font-body);
+            min-height: 100vh;
+            padding: 50px 20px;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* LAYER 1: Deep Sapphire Aisle with Golden Fog Gradient Background */
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: 
+                radial-gradient(circle at 15% 15%, rgba(214, 175, 55, 0.12) 0%, transparent 45%),
+                radial-gradient(circle at 85% 75%, rgba(6, 36, 84, 0.6) 0%, transparent 60%),
+                radial-gradient(circle at 50% 50%, #030f24 0%, var(--bg-sapphire) 100%);
+            z-index: -2;
+        }
+
+        .ambient-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(180deg, rgba(3, 10, 22, 0) 0%, rgba(3, 10, 22, 0.8) 100%);
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        /* Luxury Bookstore Header Block */
+        header {
             text-align: center;
-            letter-spacing: 1px;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .store-tag {
+            font-family: var(--font-serif);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            color: var(--gold-primary);
+            margin-bottom: 14px;
+            text-shadow: 0 0 10px var(--gold-glow);
         }
 
         h1 {
-            font-size: 3em;
-            margin-bottom: 30px;
-            background: linear-gradient(45deg, #FF6B6B, #4ECDC4, #45B7D1, #96E6A1);
+            font-family: var(--font-serif);
+            font-size: 3.4rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            background: linear-gradient(to right, #ffffff 40%, var(--gold-bright) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.2);
-            padding: 10px 0;
-            animation: titleGradient 6s ease infinite;
-            background-size: 300% 300%;
+            filter: drop-shadow(0 4px 15px rgba(0, 0, 0, 0.6));
         }
 
-        @keyframes titleGradient {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+        h1 span {
+            font-family: var(--font-classic);
+            font-style: italic;
+            text-transform: lowercase;
+            color: var(--gold-primary);
+            font-size: 3.8rem;
+            margin-left: 8px;
+            -webkit-text-fill-color: initial;
+        }
+
+        /* LAYER 2: Structural Panels */
+        .workspace-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 40px;
+        }
+
+        @media (min-width: 992px) {
+            .workspace-grid {
+                grid-template-columns: 400px 1fr;
+            }
+        }
+
+        /* Frosted Deep Sapphire Glass Panels with Metallic Trim */
+        .glass-panel {
+            background: var(--panel-sapphire);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border: 1px solid var(--border-gold);
+            border-top: 1px solid rgba(214, 175, 55, 0.3);
+            border-radius: 14px;
+            padding: 35px;
+            box-shadow: 0 25px 55px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+            height: fit-content;
         }
 
         h2 {
-            font-size: 2.2em;
-            margin-bottom: 20px;
-            color: #FF6B6B;
-            text-shadow: 2px 2px 4px rgba(255, 107, 107, 0.3);
+            font-family: var(--font-serif);
+            font-size: 1.25rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--gold-bright);
+            margin-bottom: 28px;
+            border-bottom: 1px solid rgba(214, 175, 55, 0.2);
+            padding-bottom: 14px;
+            text-shadow: 0 0 8px var(--gold-glow);
         }
 
-        .preferences {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 25px;
-            border-radius: 20px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-            margin-bottom: 25px;
-            border: 3px solid #4ECDC4;
-            backdrop-filter: blur(4px);
+        /* Form Styling Elements */
+        .form-element {
+            margin-bottom: 24px;
         }
 
-        .recommendations {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 25px;
-            border-radius: 20px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-            border: 3px solid #45B7D1;
-            backdrop-filter: blur(4px);
-        }
-
-        .book {
-            border-bottom: 3px solid rgba(78, 205, 196, 0.3);
-            padding: 20px;
-            margin: 10px 0;
-            transition: all 0.3s ease;
-            border-radius: 15px;
-            background: rgba(255, 255, 255, 0.05);
-        }
-
-        .book:hover {
-            transform: translateX(10px) translateY(-5px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-            background: rgba(255, 255, 255, 0.1);
-            border-left: 5px solid #4ECDC4;
-        }
-
-        .book:last-child {
-            border-bottom: none;
+        label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: #8da2c4;
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 500;
         }
 
         select[multiple] {
             width: 100%;
-            height: 100px;
-            border: 3px solid #45B7D1;
-            border-radius: 12px;
+            height: 150px;
+            background: rgba(2, 7, 15, 0.8);
+            border: 1px solid var(--border-gold);
+            border-radius: 8px;
             padding: 8px;
-            margin-bottom: 15px;
-            background: rgba(255, 255, 255, 0.1);
-            color: white;
+            color: #f1f5f9;
+            font-size: 0.95rem;
+            font-family: var(--font-body);
+            outline: none;
             transition: all 0.3s ease;
-        }
-
-        select[multiple] option {
-            background: #0a1929;
-            color: white;
-            padding: 8px;
         }
 
         select[multiple]:focus {
-            border-color: #FF6B6B;
-            box-shadow: 0 0 15px rgba(255, 107, 107, 0.3);
+            border-color: var(--gold-primary);
+            box-shadow: 0 0 12px var(--gold-glow);
+        }
+
+        select[multiple] option {
+            padding: 10px 14px;
+            border-radius: 6px;
+            margin-bottom: 4px;
+            cursor: pointer;
+        }
+
+        select[multiple] option:checked {
+            background: rgba(214, 175, 55, 0.15) !important;
+            color: var(--gold-bright);
+            font-weight: 600;
+        }
+
+        .dual-inputs {
+            display: flex;
+            gap: 12px;
         }
 
         input[type="number"] {
-            width: 150px;
-            padding: 12px;
-            border: 3px solid #45B7D1;
-            border-radius: 12px;
-            margin: 5px 10px 15px 0;
-            background: rgba(255, 255, 255, 0.1);
-            color: white;
-            transition: all 0.3s ease;
+            width: 100%;
+            background: rgba(2, 7, 15, 0.8);
+            border: 1px solid var(--border-gold);
+            border-radius: 8px;
+            padding: 14px;
+            color: #ffffff;
+            font-size: 1rem;
+            outline: none;
+            transition: all 0.3s;
         }
 
         input[type="number"]:focus {
-            border-color: #FF6B6B;
-            box-shadow: 0 0 15px rgba(255, 107, 107, 0.3);
+            border-color: var(--gold-primary);
+            box-shadow: 0 0 15px var(--gold-glow);
         }
 
+        /* Gold Burnished Search Trigger Button */
         button {
-            background: linear-gradient(45deg, #FF6B6B, #FF8E53);
-            color: white;
+            width: 100%;
+            background: linear-gradient(135deg, #e5c060 0%, var(--gold-primary) 50%, #b38f24 100%);
+            color: #030a16;
             border: none;
-            padding: 15px 30px;
-            border-radius: 12px;
+            font-family: var(--font-serif);
+            font-size: 0.9rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            padding: 16px;
+            border-radius: 8px;
             cursor: pointer;
-            font-family: 'Fredoka One', cursive;
-            font-size: 1.1em;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            margin-top: 10px;
+            box-shadow: 0 4px 20px rgba(214, 175, 55, 0.25);
         }
 
         button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(255, 107, 107, 0.5);
-            background: linear-gradient(45deg, #FF8E53, #FF6B6B);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(214, 175, 55, 0.45);
+            filter: brightness(1.15);
         }
 
-        label {
+        /* LAYER 3: 3D Luxury Book Spine Displays */
+        .shelf-display {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .book-item-card {
+            background: linear-gradient(90deg, #1f1807 0%, rgba(13, 26, 48, 0.4) 100%);
+            border: 1px solid var(--border-gold);
+            border-radius: 6px 14px 14px 6px;
+            padding: 28px 32px 28px 45px;
+            position: relative;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.45);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            overflow: hidden;
+        }
+
+        /* The Dimensional Gold-Foiled Book Spine */
+        .book-item-card::before {
+            content: '';
+            position: absolute;
+            left: 0; top: 0; bottom: 0;
+            width: 18px;
+            background: linear-gradient(90deg, rgba(0,0,0,0.5) 0%, rgba(255,255,255,0.15) 50%, rgba(0,0,0,0.7) 100%), var(--gold-primary);
+            border-right: 1px solid rgba(0, 0, 0, 0.6);
+            box-shadow: 2px 0 6px rgba(0,0,0,0.4);
+        }
+
+        /* Luxury Warm-lit sheen effect */
+        .book-item-card::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(135deg, rgba(214, 175, 55, 0.05) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .book-item-card:hover {
+            transform: translateX(8px);
+            border-color: rgba(214, 175, 55, 0.5);
+            box-shadow: -5px 20px 45px rgba(0, 0, 0, 0.6), 0 0 25px rgba(214, 175, 55, 0.15);
+        }
+
+        .card-meta-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 12px;
+        }
+
+        .title-display {
+            font-family: var(--font-serif);
+            font-size: 1.5rem;
+            font-weight: 700;
             color: #ffffff;
-            font-weight: 600;
-            display: block;
-            margin-bottom: 8px;
-            font-size: 1.1em;
+            line-height: 1.2;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
         }
 
-        .book h3 {
-            color: #FF6B6B;
-            margin: 0 0 15px 0;
-            font-family: 'Fredoka One', cursive;
-            font-size: 1.6em;
-            text-shadow: 1px 1px 2px rgba(255, 107, 107, 0.2);
+        .badge-match {
+            font-family: var(--font-body);
+            font-size: 0.75rem;
+            font-weight: 700;
+            background: rgba(214, 175, 55, 0.12);
+            border: 1px solid rgba(214, 175, 55, 0.4);
+            color: var(--gold-bright);
+            padding: 4px 12px;
+            border-radius: 4px;
+            letter-spacing: 0.5px;
+            text-shadow: 0 0 5px var(--gold-glow);
         }
 
-        .book p {
-            margin: 8px 0;
-            color: #ffffff;
-            font-size: 1.05em;
-            line-height: 1.4;
+        .author-text {
+            font-family: var(--font-classic);
+            font-size: 1.3rem;
+            font-style: italic;
+            color: #cbd5e1;
+            margin-bottom: 22px;
         }
 
-        .book p strong {
-            color: #45B7D1;
-            font-weight: 600;
+        .spec-shelf-matrix {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            border-top: 1px solid rgba(214, 175, 55, 0.15);
+            padding-top: 16px;
         }
 
-        /* Rainbow loading animation for fetch operations */
-        @keyframes rainbow {
-            0% { border-color: #FF6B6B; }
-            25% { border-color: #4ECDC4; }
-            50% { border-color: #45B7D1; }
-            75% { border-color: #96E6A1; }
-            100% { border-color: #FF6B6B; }
+        @media (min-width: 576px) {
+            .spec-shelf-matrix {
+                grid-template-columns: 2fr 1fr 1fr;
+            }
         }
 
-        .loading {
-            border: 4px solid;
-            animation: rainbow 2s linear infinite;
+        .spec-unit {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .spec-label {
+            font-size: 0.68rem;
+            text-transform: uppercase;
+            color: #64748b;
+            letter-spacing: 1px;
+            margin-bottom: 4px;
+        }
+
+        .spec-value {
+            font-size: 0.95rem;
+            color: #e2e8f0;
+        }
+
+        .spec-value.rating-star {
+            color: var(--gold-primary);
+            font-weight: 700;
+            text-shadow: 0 0 8px var(--gold-glow);
+        }
+
+        /* Catalog Fetch Animations */
+        .catalog-loader {
+            text-align: center;
+            padding: 70px 0;
+            font-family: var(--font-serif);
+            color: var(--gold-primary);
+            font-size: 0.95rem;
+            letter-spacing: 3px;
+            animation: goldPulse 2s infinite ease-in-out;
+            text-shadow: 0 0 5px var(--gold-glow);
+        }
+
+        @keyframes goldPulse {
+            0%, 100% { opacity: 0.4; filter: brightness(0.8); }
+            50% { opacity: 1; filter: brightness(1.2); }
         }
     </style>
 </head>
 <body>
-    <h1>Book Recommendation Engine</h1>
-    
-    <div class="preferences">
-        <h2>Your Preferences</h2>
-        <form id="preferencesForm">
-            <div>
-                <label for="genres">Preferred Genres (hold Ctrl/Cmd to select multiple):</label><br>
-                <select id="genres" multiple required></select>
-            </div>
-            <div>
-                <label for="minRating">Minimum Rating:</label><br>
-                <input type="number" id="minRating" min="0" max="5" step="0.1" value="4.0">
-            </div>
-            <div>
-                <label>Year Range:</label><br>
-                <input type="number" id="minYear" placeholder="Min Year" value="1800">
-                <input type="number" id="maxYear" placeholder="Max Year" value="2023">
-            </div>
-            <button type="submit">Get Recommendations</button>
-        </form>
-    </div>
 
-    <div class="recommendations">
-        <h2>Recommended Books</h2>
-        <div id="recommendationsList"></div>
+    <div class="ambient-overlay"></div>
+
+    <div class="container">
+        <!-- Bookstore Luxury Branding -->
+        <header>
+            <div class="store-tag">Curated Archive Node</div>
+            <h1>The Golden<span>alcove</span></h1>
+        </header>
+
+        <div class="workspace-grid">
+            <!-- Parameter Selection Panel -->
+            <div class="glass-panel">
+                <h2>Curation Matrix</h2>
+                <form id="preferencesForm">
+                    <div class="form-element">
+                        <label for="genres">Browse Genre Alcovens</label>
+                        <select id="genres" multiple required></select>
+                    </div>
+                    
+                    <div class="form-element">
+                        <label for="minRating">Minimum Quality Score</label>
+                        <input type="number" id="minRating" min="0" max="5" step="0.1" value="4.0">
+                    </div>
+                    
+                    <div class="form-element">
+                        <label>Chronological Threshold</label>
+                        <div class="dual-inputs">
+                            <input type="number" id="minYear" placeholder="Start Year" value="1800">
+                            <input type="number" id="maxYear" placeholder="End Year" value="2023">
+                        </div>
+                    </div>
+                    
+                    <button type="submit">Consult Archivist</button>
+                </form>
+            </div>
+
+            <!-- Volume Bookshelf Display Output -->
+            <div class="glass-panel">
+                <h2>Discovered Volumes</h2>
+                <div id="recommendationsList" class="shelf-display">
+                    <p style="color: #64748b; text-align: center; padding: 60px 0; font-family: var(--font-classic); font-style: italic; font-size: 1.3rem;">
+                        Select parameters to populate the luxury library shelves...
+                    </p>
+                </div>
+            </div>
+        </div>
     </div>
 
     <script>
@@ -223,20 +431,22 @@
                 genres.forEach(genre => {
                     const option = document.createElement('option');
                     option.value = genre;
-                    option.textContent = genre;
+                    option.textContent = genre.charAt(0).toUpperCase() + genre.slice(1);
                     select.appendChild(option);
                 });
             });
 
-        // Handle form submission
+        // Form handler
         document.getElementById('preferencesForm').addEventListener('submit', async (e) => {
             e.preventDefault();
-            
+            const list = document.getElementById('recommendationsList');
+            list.innerHTML = '<div class="catalog-loader">PULLING FOILED VOLUMES FROM SHELVES...</div>';
+
             const genres = Array.from(document.getElementById('genres').selectedOptions).map(option => option.value);
             const minRating = parseFloat(document.getElementById('minRating').value);
             const minYear = parseInt(document.getElementById('minYear').value);
             const maxYear = parseInt(document.getElementById('maxYear').value);
-
+            
             const preferences = {
                 genres,
                 minRating,
@@ -246,16 +456,14 @@
             try {
                 const response = await fetch('/api/recommendations', {
                     method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
+                    headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(preferences)
                 });
-
                 const recommendations = await response.json();
                 displayRecommendations(recommendations);
             } catch (error) {
-                console.error('Error:', error);
+                console.error('Archive Error:', error);
+                list.innerHTML = '<p style="color: #ef4444; text-align: center; font-family: var(--font-body); padding: 40px 0;">Failed to pull volumes from storage node.</p>';
             }
         });
 
@@ -264,20 +472,33 @@
             list.innerHTML = '';
 
             if (recommendations.length === 0) {
-                list.innerHTML = '<p>No recommendations found matching your preferences.</p>';
+                list.innerHTML = '<p style="color: #64748b; text-align: center; padding: 60px 0; font-family: var(--font-classic); font-style: italic; font-size: 1.2rem;">No matching volumes found in this wing of the archive.</p>';
                 return;
             }
 
             recommendations.forEach(book => {
                 const bookElement = document.createElement('div');
-                bookElement.className = 'book';
+                bookElement.className = 'book-item-card';
                 bookElement.innerHTML = `
-                    <h3>${book.title}</h3>
-                    <p><strong>Author:</strong> ${book.author}</p>
-                    <p><strong>Genres:</strong> ${book.genres.join(', ')}</p>
-                    <p><strong>Rating:</strong> ${book.rating}</p>
-                    <p><strong>Year:</strong> ${book.year}</p>
-                    <p><strong>Match Score:</strong> ${book.score}</p>
+                    <div class="card-meta-top">
+                        <div class="title-display">${book.title}</div>
+                        <div class="badge-match">Match: ${book.score}</div>
+                    </div>
+                    <div class="author-text">by ${book.author}</div>
+                    <div class="spec-shelf-matrix">
+                        <div class="spec-unit">
+                            <span class="spec-label">Categories</span>
+                            <span class="spec-value" style="color: #94a3b8; font-size: 0.85rem;">${book.genres.join(', ')}</span>
+                        </div>
+                        <div class="spec-unit">
+                            <span class="spec-label">Review Score</span>
+                            <span class="spec-value rating-star">★ ${book.rating}</span>
+                        </div>
+                        <div class="spec-unit">
+                            <span class="spec-label">Edition Year</span>
+                            <span class="spec-value">${book.year}</span>
+                        </div>
+                    </div>
                 `;
                 list.appendChild(bookElement);
             });

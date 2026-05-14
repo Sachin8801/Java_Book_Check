@@ -3,13 +3,14 @@
   "version": "1.0.0",
   "description": "A simple book recommendation engine",
   "main": "server.js",
-  "type": "module",
+  "type": "commonjs",
   "scripts": {
     "start": "node server.js",
     "dev": "node --watch server.js"
   },
   "dependencies": {
+    "cors": "^2.8.5",
     "express": "^4.18.2",
-    "cors": "^2.8.5"
+    "pg": "^8.20.0"
   }
 }
